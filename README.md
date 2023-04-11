@@ -1,1 +1,1 @@
-# fyp-demo
+# final-year-project-demo
