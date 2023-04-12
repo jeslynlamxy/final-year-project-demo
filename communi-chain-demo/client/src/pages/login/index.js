@@ -43,7 +43,9 @@ function Login() {
         <div className="flex gap-2">
           <i className="ri-shield-line text-2xl text-primary"></i>
           <h1 className="text-2xl uppercase font-semibold text-primary">
-            Communi-Chain Login
+            Communi-Chain
+            <br></br>
+            Log In
           </h1>
         </div>
         <hr />
