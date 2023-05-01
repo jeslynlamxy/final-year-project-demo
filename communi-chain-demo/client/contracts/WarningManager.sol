@@ -20,7 +20,7 @@ contract WarningManager {
     // Note that using bytes proven to be more gas friednly than string mappings
     mapping(bytes32 => CautionedDetails) emailToCautionedDetails;
 
-    event LogNewReport(address sender, bytes32 emailAddress);
+    event LogRegisterUser(address sender, bytes32 emailAddress);
     event LogAddCount(address sender, bytes32 emailAddress);
 
     /* bytes32 (fixed-size array) to string (dynamically-sized array) */
@@ -38,12 +38,12 @@ contract WarningManager {
         return string(bytesArray);
     }
 
-    function newReport(bytes32 emailAddress) public {
+    function registerUser(bytes32 emailAddress) public {
         cautionedUserSet.insert(emailAddress);
         // Note that this will fail automatically if the username already exists.
         CautionedDetails storage w = emailToCautionedDetails[emailAddress];
         w.reportCount = 0;
-        emit LogNewReport(msg.sender, emailAddress);
+        emit LogRegisterUser(msg.sender, emailAddress);
     }
 
     function addCount(bytes32 emailAddress) public {

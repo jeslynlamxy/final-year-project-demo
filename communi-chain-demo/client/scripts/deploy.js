@@ -19,10 +19,35 @@ async function main() {
   console.log("WarningManager deployed to:", warningmanager.address);
   console.log("");
 
+  // console.log("*** SET UP ALL DEMO USERS ***");
+  const addNewUserTx1 = await usermanager.newUser(utils.formatBytes32String("alice.wonderland.demo@gmail.com"), "password");
+  await addNewUserTx1.wait();
+  const addNewUserTx2 = await usermanager.newUser(utils.formatBytes32String("bob.builderr.demo@gmail.com"), "password");
+  await addNewUserTx2.wait();
+  const addNewUserTx3 = await usermanager.newUser(utils.formatBytes32String("charlie.choco.demo@gmail.com"), "password");
+  await addNewUserTx3.wait();
+  const addNewUserTx4 = await usermanager.newUser(utils.formatBytes32String("donald.trumpet.demo@gmail.com"), "password");
+  await addNewUserTx4.wait();
+  const addNewUserTx5 = await usermanager.newUser(utils.formatBytes32String("eve.val.demo@gmail.com"), "password");
+  await addNewUserTx5.wait();
+  const addNewUserTx6 = await usermanager.newUser(utils.formatBytes32String("jeslynlxy@hotmail.com"), "password");
+  await addNewUserTx6.wait();
+
+  const addNewReportTx1 = await warningmanager.registerUser(utils.formatBytes32String("alice.wonderland.demo@gmail.com"));
+  await addNewReportTx1.wait();
+  const addNewReportTx2 = await warningmanager.registerUser(utils.formatBytes32String("bob.builderr.demo@gmail.com"));
+  await addNewReportTx2.wait();
+  const addNewReportTx3 = await warningmanager.registerUser(utils.formatBytes32String("charlie.choco.demo@gmail.com"));
+  await addNewReportTx3.wait();
+  const addNewReportTx4 = await warningmanager.registerUser(utils.formatBytes32String("donald.trumpet.demo@gmail.com"));
+  await addNewReportTx4.wait();
+  const addNewReportTx5 = await warningmanager.registerUser(utils.formatBytes32String("eve.val.demo@gmail.com"));
+  await addNewReportTx5.wait();
+  const addNewReportTx6 = await warningmanager.registerUser(utils.formatBytes32String("jeslynlxy@hotmail.com"));
+  await addNewReportTx6.wait();
+
   // For testing
-  console.log("*** SET UP CAUTIONED USERS DONALD AND EVE ***");
-  const addNewReportTxDon = await warningmanager.newReport(utils.formatBytes32String("donald.trumpet.demo@gmail.com"));
-  await addNewReportTxDon.wait();
+  console.log("*** REPORTING DEFAULTS FOR CAUTIONED USERS DONALD AND EVE ***");
   const checkCountTxDon = await warningmanager.getCount(utils.formatBytes32String("donald.trumpet.demo@gmail.com"));
   console.log("Donald Report Count:", checkCountTxDon);
 
@@ -48,8 +73,6 @@ async function main() {
 
   console.log("");
 
-  const addNewReportTxEve = await warningmanager.newReport(utils.formatBytes32String("eve.val.demo@gmail.com"));
-  await addNewReportTxEve.wait();
   const checkCountTxEve = await warningmanager.getCount(utils.formatBytes32String("eve.val.demo@gmail.com"));
   console.log("Eve Report Count:", checkCountTxEve);
 
@@ -65,17 +88,6 @@ async function main() {
 
   console.log("");
 
-  // For testing
-  console.log("*** ADMINISTRATIVE ACCOUNT ***");
-  // const firstCount = await usermanager.getUserCount();
-  // console.log("Current number of users is:", firstCount.toString());
-  const addNewUserTx = await usermanager.newUser(utils.formatBytes32String("admin@email.com"), "password");
-  await addNewUserTx.wait();
-  // const secondCount = await usermanager.getUserCount();
-  // console.log("Current number of users is:", secondCount.toString());
-  console.log("Credentials:", "admin@email.com", "password");
-
-  console.log("");
 }
 
 main()
