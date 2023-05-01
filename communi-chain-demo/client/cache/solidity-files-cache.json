@@ -110,8 +110,8 @@
       ]
     },
     "/Users/jeslynlam/Desktop/final-year-project-demo/communi-chain-demo/client/contracts/WarningManager.sol": {
-      "lastModificationDate": 1682950383534,
-      "contentHash": "a506e95512f301282c9a215c567d065f",
+      "lastModificationDate": 1682954835111,
+      "contentHash": "21a107b2af46a2c85c712dd26b25ce7e",
       "sourceName": "contracts/WarningManager.sol",
       "solcConfig": {
         "version": "0.8.17",

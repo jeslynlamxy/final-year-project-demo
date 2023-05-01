@@ -10,11 +10,12 @@ contract WarningManager {
     using HitchensUnorderedKeySetLib for HitchensUnorderedKeySetLib.Set;
     HitchensUnorderedKeySetLib.Set cautionedUserSet;
 
-    // Key is emailAddress // To be encrypted
+    // Key is emailAddress
     struct CautionedDetails {
         int reportCount;
     }
 
+    // List of people to be wary off, donald and eve
     string[] public CautionedPersons;
 
     // Note that using bytes proven to be more gas friednly than string mappings
