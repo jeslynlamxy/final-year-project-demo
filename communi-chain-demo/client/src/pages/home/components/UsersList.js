@@ -190,9 +190,14 @@ function UsersList({ searchKey, socket, onlineUsers }) {
                 <div className="flex gap-1">
                   <div className="flex gap-1 items-center">
                     <h1>{userObj.name}</h1>
+                    { (
+                      <div>
+                        {/* <div className="bg-red-700 h-5 w-5 rounded-full h-5 w-5 flex items-center justify-center"></div> */}
+                      </div>
+                    )}
                     {onlineUsers.includes(userObj._id) && (
                       <div>
-                        <div className="bg-green-700 h-3 w-3 rounded-full"></div>
+                        <div className="bg-green-700 h-5 w-5 rounded-full h-5 w-5 flex items-center justify-center"></div>
                       </div>
                     )}
                   </div>

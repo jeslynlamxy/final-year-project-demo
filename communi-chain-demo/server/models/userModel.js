@@ -18,6 +18,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
+    isCautioned: {
+      type: Boolean,
+      required: true,
+    },
   },
   {
     timestamps: true,

@@ -185,6 +185,20 @@ function ChatArea({ socket }) {
     };
   };
 
+  const callUser = async () => {
+    try {
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+  const reportUser = async () => {
+    try {
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
   return (
     <div className="bg-white h-[82vh] border rounded-2xl w-full flex flex-col justify-between p-5">
       {/* 1st part receipent user */}
@@ -204,8 +218,27 @@ function ChatArea({ socket }) {
               </h1>
             </div>
           )}
-          <h1 className="uppercase">{receipentUser.name}</h1>
+          <h1 className="">{receipentUser.name}</h1>
+          <div className="flex md:flex md:flex-grow flex-row-reverse space-x-1 gap-3">
+
+            <button
+              className="bg-slate-300 text-white py-1 px-5 rounded h-max"
+              onClick={() => callUser("")}
+            >
+              <i className="ri-phone-fill text-primary text-2xl"></i>
+            </button>
+
+            <button
+              className="bg-slate-300 text-white py-1 px-5 rounded h-max"
+              onClick={() => reportUser("")}
+            >
+              <i className="ri-alert-fill text-primary text-2xl"></i>
+            </button>
+
+          </div>
+
         </div>
+
         <hr />
       </div>
 
@@ -219,11 +252,10 @@ function ChatArea({ socket }) {
                 <div className="flex flex-col gap-1">
                   {message.text && (
                     <h1
-                      className={`${
-                        isCurrentUserIsSender
-                          ? "bg-primary text-white rounded-bl-none"
-                          : "bg-gray-300 text-primary rounded-tr-none"
-                      } p-2 rounded-xl`}
+                      className={`${isCurrentUserIsSender
+                        ? "bg-primary text-white rounded-bl-none"
+                        : "bg-gray-300 text-primary rounded-tr-none"
+                        } p-2 rounded-xl`}
                     >
                       {message.text}
                     </h1>
@@ -286,7 +318,7 @@ function ChatArea({ socket }) {
 
         <div className="flex gap-2 text-xl">
           <label for="file">
-            <i class="ri-link cursor-pointer text-xl" typeof="file"></i>
+            <i class="ri-link cursor-pointer text-2xl" typeof="file"></i>
             <input
               type="file"
               id="file"
@@ -298,7 +330,7 @@ function ChatArea({ socket }) {
             />
           </label>
           <i
-            class="ri-emotion-line cursor-pointer text-xl"
+            class="ri-emotion-line cursor-pointer text-2xl"
             onClick={() => setShowEmojiPicker(!showEmojiPicker)}
           ></i>
         </div>
