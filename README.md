@@ -14,6 +14,7 @@
 - Eve eve.val.demo@gmail.com
 
 ## Set up
+
 - Alice, Bob, Donald and Eve already created
 - Alice, Bob, Eve has reported Donald so he has been marked as a cautioned user
 - Log in to Alice and Bob
@@ -29,6 +30,7 @@
 # Hardhat + ReactJS Barebones Boilerplate
 
 ## Sample Hardhat Project
+
 This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
 
 Try running some of the following tasks:
