@@ -147,8 +147,8 @@
       ]
     },
     "C:\\Users\\Admin\\Desktop\\fyp-demo\\communi-chain-demo\\client\\contracts\\WarningManager.sol": {
-      "lastModificationDate": 1682939837012,
-      "contentHash": "e7004b4fdeaa1ea2989dc28acfe0bba0",
+      "lastModificationDate": 1682941715343,
+      "contentHash": "6f20b1d5cce724f3efe97c5ffb589d3d",
       "sourceName": "contracts/WarningManager.sol",
       "solcConfig": {
         "version": "0.8.17",

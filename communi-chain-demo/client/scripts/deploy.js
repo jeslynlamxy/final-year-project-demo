@@ -43,6 +43,11 @@ async function main() {
 
   console.log("");
 
+  const checkListTx = await warningmanager.getCautionedPersons();
+  console.log("Get Cautioned Persons:", checkListTx);
+
+  console.log("");
+
   const addNewReportTxEve = await warningmanager.newReport(utils.formatBytes32String("eve.val.demo@gmail.com"));
   await addNewReportTxEve.wait();
   const checkCountTxEve = await warningmanager.getCount(utils.formatBytes32String("eve.val.demo@gmail.com"));

@@ -15,13 +15,28 @@ contract WarningManager {
         int reportCount;
     }
 
-    bytes32[] public CautionedPersons;
+    string[] public CautionedPersons;
 
     // Note that using bytes proven to be more gas friednly than string mappings
     mapping(bytes32 => CautionedDetails) emailToCautionedDetails;
 
     event LogNewReport(address sender, bytes32 emailAddress);
     event LogAddCount(address sender, bytes32 emailAddress);
+
+    /* bytes32 (fixed-size array) to string (dynamically-sized array) */
+    function bytes32ToString(
+        bytes32 _bytes32
+    ) public pure returns (string memory) {
+        uint8 i = 0;
+        while (i < 32 && _bytes32[i] != 0) {
+            i++;
+        }
+        bytes memory bytesArray = new bytes(i);
+        for (i = 0; i < 32 && _bytes32[i] != 0; i++) {
+            bytesArray[i] = _bytes32[i];
+        }
+        return string(bytesArray);
+    }
 
     function newReport(bytes32 emailAddress) public {
         cautionedUserSet.insert(emailAddress);
@@ -41,7 +56,7 @@ contract WarningManager {
         w.reportCount += 1;
         emit LogAddCount(msg.sender, emailAddress);
         if (w.reportCount == 3) {
-            CautionedPersons.push(emailAddress);
+            CautionedPersons.push(bytes32ToString(emailAddress));
         }
     }
 
@@ -57,7 +72,7 @@ contract WarningManager {
         return w.reportCount;
     }
 
-    function getCautionedPersons() public view returns (bytes32[] memory) {
+    function getCautionedPersons() public view returns (string[] memory) {
         return CautionedPersons;
     }
 }
