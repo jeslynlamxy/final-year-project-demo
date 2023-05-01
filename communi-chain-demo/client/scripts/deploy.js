@@ -12,7 +12,6 @@ async function main() {
   const usermanager = await UserManager.deploy();
   await usermanager.deployed();
   console.log("UserManager deployed to:", usermanager.address);
-  console.log("");
 
   const WarningManager = await ethers.getContractFactory("WarningManager");
   const warningmanager = await WarningManager.deploy();
@@ -26,6 +25,11 @@ async function main() {
   await addNewReportTxDon.wait();
   const checkCountTxDon = await warningmanager.getCount(utils.formatBytes32String("donald.trumpet.demo@gmail.com"));
   console.log("Donald Report Count:", checkCountTxDon);
+
+  const firstReportTxDon = await warningmanager.addCount(utils.formatBytes32String("donald.trumpet.demo@gmail.com"));
+  await firstReportTxDon.wait();
+  const firstCountTxDon = await warningmanager.getCount(utils.formatBytes32String("donald.trumpet.demo@gmail.com"));
+  console.log("Donald Report Count:", firstCountTxDon);
 
   const secondReportTxDon = await warningmanager.addCount(utils.formatBytes32String("donald.trumpet.demo@gmail.com"));
   await secondReportTxDon.wait();
@@ -43,6 +47,11 @@ async function main() {
   await addNewReportTxEve.wait();
   const checkCountTxEve = await warningmanager.getCount(utils.formatBytes32String("eve.val.demo@gmail.com"));
   console.log("Eve Report Count:", checkCountTxEve);
+
+  const firstReportTxEve = await warningmanager.addCount(utils.formatBytes32String("eve.val.demo@gmail.com"));
+  await firstReportTxEve.wait();
+  const firstCountTxEve = await warningmanager.getCount(utils.formatBytes32String("eve.val.demo@gmail.com"));
+  console.log("Eve Report Count:", firstCountTxEve);
 
   const secondReportTxEve = await warningmanager.addCount(utils.formatBytes32String("eve.val.demo@gmail.com"));
   await secondReportTxEve.wait();

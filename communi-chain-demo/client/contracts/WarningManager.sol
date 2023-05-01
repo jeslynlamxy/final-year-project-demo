@@ -26,7 +26,7 @@ contract WarningManager {
         cautionedUserSet.insert(emailAddress);
         // Note that this will fail automatically if the username already exists.
         CautionedDetails storage w = emailToCautionedDetails[emailAddress];
-        w.reportCount = 1;
+        w.reportCount = 0;
         emit LogNewReport(msg.sender, emailAddress);
     }
 
