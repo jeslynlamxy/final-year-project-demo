@@ -22,23 +22,34 @@ async function main() {
 
   // For testing
   console.log("*** SET UP CAUTIONED USERS DONALD AND EVE ***");
-  const addNewReportTxDon = await warningmanager.newReport(utils.formatBytes32String("admin@email.com"));
+  const addNewReportTxDon = await warningmanager.newReport(utils.formatBytes32String("donald.trumpet.demo@gmail.com"));
   await addNewReportTxDon.wait();
-  const checkCountTxDon = await warningmanager.getCount(utils.formatBytes32String("admin@email.com"));
+  const checkCountTxDon = await warningmanager.getCount(utils.formatBytes32String("donald.trumpet.demo@gmail.com"));
   console.log("Donald Report Count:", checkCountTxDon);
 
-  const secondReportTxDon = await warningmanager.addCount(utils.formatBytes32String("admin@email.com"));
+  const secondReportTxDon = await warningmanager.addCount(utils.formatBytes32String("donald.trumpet.demo@gmail.com"));
   await secondReportTxDon.wait();
-  const secondCountTxDon = await warningmanager.getCount(utils.formatBytes32String("admin@email.com"));
+  const secondCountTxDon = await warningmanager.getCount(utils.formatBytes32String("donald.trumpet.demo@gmail.com"));
   console.log("Donald Report Count:", secondCountTxDon);
 
-  const thirdReportTxDon = await warningmanager.addCount(utils.formatBytes32String("admin@email.com"));
+  const thirdReportTxDon = await warningmanager.addCount(utils.formatBytes32String("donald.trumpet.demo@gmail.com"));
   await thirdReportTxDon.wait();
-  const thirdCountTxDon = await warningmanager.getCount(utils.formatBytes32String("admin@email.com"));
+  const thirdCountTxDon = await warningmanager.getCount(utils.formatBytes32String("donald.trumpet.demo@gmail.com"));
   console.log("Donald Report Count:", thirdCountTxDon);
-  
+
   console.log("");
 
+  const addNewReportTxEve = await warningmanager.newReport(utils.formatBytes32String("eve.val.demo@gmail.com"));
+  await addNewReportTxEve.wait();
+  const checkCountTxEve = await warningmanager.getCount(utils.formatBytes32String("eve.val.demo@gmail.com"));
+  console.log("Eve Report Count:", checkCountTxEve);
+
+  const secondReportTxEve = await warningmanager.addCount(utils.formatBytes32String("eve.val.demo@gmail.com"));
+  await secondReportTxEve.wait();
+  const secondCountTxEve = await warningmanager.getCount(utils.formatBytes32String("eve.val.demo@gmail.com"));
+  console.log("Eve Report Count:", secondCountTxEve);
+
+  console.log("");
 
   // For testing
   console.log("*** ADMINISTRATIVE ACCOUNT ***");
@@ -49,6 +60,7 @@ async function main() {
   // const secondCount = await usermanager.getUserCount();
   // console.log("Current number of users is:", secondCount.toString());
   console.log("Credentials:", "admin@email.com", "password");
+
   console.log("");
 }
 
