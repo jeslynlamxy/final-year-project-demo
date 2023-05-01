@@ -15,12 +15,13 @@ contract WarningManager {
         int reportCount;
     }
 
+    bytes32[] public CautionedPersons;
+
     // Note that using bytes proven to be more gas friednly than string mappings
     mapping(bytes32 => CautionedDetails) emailToCautionedDetails;
 
     event LogNewReport(address sender, bytes32 emailAddress);
     event LogAddCount(address sender, bytes32 emailAddress);
-    event LogReduceCount(address sender, bytes32 emailAddress);
 
     function newReport(bytes32 emailAddress) public {
         cautionedUserSet.insert(emailAddress);
@@ -30,9 +31,7 @@ contract WarningManager {
         emit LogNewReport(msg.sender, emailAddress);
     }
 
-    function addCount(
-        bytes32 emailAddress
-    ) public {
+    function addCount(bytes32 emailAddress) public {
         require(
             cautionedUserSet.exists(emailAddress),
             "Can't update a user that doesn't exist."
@@ -41,19 +40,9 @@ contract WarningManager {
         CautionedDetails storage w = emailToCautionedDetails[emailAddress];
         w.reportCount += 1;
         emit LogAddCount(msg.sender, emailAddress);
-    }
-
-    function reduceCount(
-        bytes32 emailAddress
-    ) public {
-        require(
-            cautionedUserSet.exists(emailAddress),
-            "Can't update a user that doesn't exist."
-        );
-        // Note that this does conditional checking and prints warning when fails
-        CautionedDetails storage w = emailToCautionedDetails[emailAddress];
-        w.reportCount -= 1;
-        emit LogReduceCount(msg.sender, emailAddress);
+        if (w.reportCount == 3) {
+            CautionedPersons.push(emailAddress);
+        }
     }
 
     function getCount(
@@ -66,5 +55,9 @@ contract WarningManager {
         // Note that this does conditional checking and prints warning when fails
         CautionedDetails storage w = emailToCautionedDetails[emailAddress];
         return w.reportCount;
+    }
+
+    function getCautionedPersons() public view returns (bytes32[] memory) {
+        return CautionedPersons;
     }
 }
