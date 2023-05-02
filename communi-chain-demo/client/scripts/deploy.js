@@ -28,8 +28,8 @@ async function main() {
   const addNewUserTx2 = await usermanager.newUser(utils.formatBytes32String("bob.builderr.demo@gmail.com"), "password");
   await addNewUserTx2.wait();
 
-  const addNewUserTx3 = await usermanager.newUser(utils.formatBytes32String("charlie.choco.demo@gmail.com"), "password");
-  await addNewUserTx3.wait();
+  // const addNewUserTx3 = await usermanager.newUser(utils.formatBytes32String("charlie.choco.demo@gmail.com"), "password");
+  // await addNewUserTx3.wait();
 
   const addNewUserTx4 = await usermanager.newUser(utils.formatBytes32String("donald.trumpet.demo@gmail.com"), "password");
   await addNewUserTx4.wait();
@@ -43,8 +43,8 @@ async function main() {
   const addNewReportTx2 = await warningmanager.registerUser(utils.formatBytes32String("bob.builderr.demo@gmail.com"));
   await addNewReportTx2.wait();
 
-  const addNewReportTx3 = await warningmanager.registerUser(utils.formatBytes32String("charlie.choco.demo@gmail.com"));
-  await addNewReportTx3.wait();
+  // const addNewReportTx3 = await warningmanager.registerUser(utils.formatBytes32String("charlie.choco.demo@gmail.com"));
+  // await addNewReportTx3.wait();
   
   const addNewReportTx4 = await warningmanager.registerUser(utils.formatBytes32String("donald.trumpet.demo@gmail.com"));
   await addNewReportTx4.wait();
