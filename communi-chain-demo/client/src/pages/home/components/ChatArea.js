@@ -68,7 +68,7 @@ function ChatArea({ socket }) {
     addedWarning();
   }, []);
 
-  const connectWallet = async () => {
+  const launchReport = async () => {
     try {
       const { ethereum } = window;
       if (!ethereum) {
@@ -102,10 +102,6 @@ function ChatArea({ socket }) {
     const secondReportTxDon = await contract.addCount(utils.formatBytes32String(receipentUser.email));
     await secondReportTxDon.wait();
   };
-
-  // useEffect(() => {
-  //   connectWallet();
-  // }, []);
 
   const sendNewMessage = async (image) => {
     try {
@@ -279,7 +275,7 @@ function ChatArea({ socket }) {
 
   const reportUser = async () => {
     try {
-      connectWallet();
+      launchReport();
     } catch (error) {
       toast.error(error.message);
     }
