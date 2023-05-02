@@ -9,7 +9,7 @@
 
 - Alice alice.wonderland.demo@gmail.com
 - Bob bob.builderr.demo@gmail.com
-- Charlie charlie.chocolate.demo@gmail.com
+- Charlie charlie.choco.demo@gmail.com
 - Donald donald.trumpet.demo@gmail.com
 - Eve eve.val.demo@gmail.com
 
