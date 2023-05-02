@@ -2,6 +2,8 @@ const { ethers } = require("hardhat");
 const utils = ethers.utils;
 
 async function main() {
+  console.log("");
+
   console.log("*** DEPLOYMENT ***");
   const Greeter = await ethers.getContractFactory("Greeter");
   const greeter = await Greeter.deploy("Hello, Hardhat!");
@@ -26,8 +28,8 @@ async function main() {
   const addNewUserTx2 = await usermanager.newUser(utils.formatBytes32String("bob.builderr.demo@gmail.com"), "password");
   await addNewUserTx2.wait();
 
-  // const addNewUserTx3 = await usermanager.newUser(utils.formatBytes32String("charlie.choco.demo@gmail.com"), "password");
-  // await addNewUserTx3.wait();
+  const addNewUserTx3 = await usermanager.newUser(utils.formatBytes32String("charlie.choco.demo@gmail.com"), "password");
+  await addNewUserTx3.wait();
 
   const addNewUserTx4 = await usermanager.newUser(utils.formatBytes32String("donald.trumpet.demo@gmail.com"), "password");
   await addNewUserTx4.wait();
@@ -41,8 +43,8 @@ async function main() {
   const addNewReportTx2 = await warningmanager.registerUser(utils.formatBytes32String("bob.builderr.demo@gmail.com"));
   await addNewReportTx2.wait();
 
-  // const addNewReportTx3 = await warningmanager.registerUser(utils.formatBytes32String("charlie.choco.demo@gmail.com"));
-  // await addNewReportTx3.wait();
+  const addNewReportTx3 = await warningmanager.registerUser(utils.formatBytes32String("charlie.choco.demo@gmail.com"));
+  await addNewReportTx3.wait();
   
   const addNewReportTx4 = await warningmanager.registerUser(utils.formatBytes32String("donald.trumpet.demo@gmail.com"));
   await addNewReportTx4.wait();
@@ -104,9 +106,11 @@ async function main() {
 
   console.log("");
 
-  console.log("*** 3 REPORTS TO BE LISTED ***");
+  console.log("*** FINAL CAUTIONED LIST WITH DONALD ***");
   const checkListTxAgain = await warningmanager.getCautionedPersons();
   console.log("Get Cautioned Persons:", checkListTxAgain);
+
+  console.log("");
 
 }
 
