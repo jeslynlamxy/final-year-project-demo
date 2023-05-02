@@ -11,7 +11,11 @@ import React, { useEffect } from "react";
 import Greeter from "./artifacts/contracts/Greeter.sol/Greeter.json";
 import { ethers } from "ethers";
 
+let contttt1 = "loll";
+
 function App() {
+
+  let contttt = "loll";
   
   const connectWallet = async () => {
     try {
