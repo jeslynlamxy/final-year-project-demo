@@ -8,8 +8,12 @@ import moment from "moment";
 import { SetAllChats } from "../../../redux/userSlice";
 import store from "../../../redux/store";
 import EmojiPicker from "emoji-picker-react";
+import WarningManager from "../../../artifacts/contracts/WarningManager.sol/WarningManager.json";
+import { ethers } from "ethers";
+const utils = ethers.utils;
 
 function ChatArea({ socket }) {
+
   const [showEmojiPicker, setShowEmojiPicker] = React.useState(false);
   const [isReceipentTyping, setIsReceipentTyping] = React.useState(false);
   const dispatch = useDispatch();
@@ -21,6 +25,87 @@ function ChatArea({ socket }) {
   const receipentUser = selectedChat.members.find(
     (mem) => mem._id !== user._id
   );
+
+  const [warnedUsers, setWarnedUsers] = React.useState([]);
+
+  const addedWarning = async () => {
+    try {
+      const { ethereum } = window;
+      if (!ethereum) {
+        alert("Please install MetaMask!");
+        return;
+      }
+      const accounts = await ethereum.request({
+        method: "eth_requestAccounts",
+      });
+      console.log("Connected", accounts[0]);
+      fetchingList();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchingList = async () => {
+    let contractAddress = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0";
+    const { ethereum } = window;
+    if (!ethereum) {
+      alert("Please install MetaMask!");
+      return;
+    }
+    const provider = new ethers.providers.Web3Provider(ethereum);
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(
+      contractAddress,
+      WarningManager.abi,
+      signer
+    );
+    const warnList = await contract.getCautionedPersons();
+    console.log(warnList);
+    setWarnedUsers(warnList);
+  };
+
+  useEffect(() => {
+    addedWarning();
+  }, []);
+
+  const connectWallet = async () => {
+    try {
+      const { ethereum } = window;
+      if (!ethereum) {
+        alert("Please install MetaMask!");
+        return;
+      }
+      const accounts = await ethereum.request({
+        method: "eth_requestAccounts",
+      });
+      console.log("Connected", accounts[0]);
+      sendReport();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const sendReport = async () => {
+    let contractAddress = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0";
+    const { ethereum } = window;
+    if (!ethereum) {
+      alert("Please install MetaMask!");
+      return;
+    }
+    const provider = new ethers.providers.Web3Provider(ethereum);
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(
+      contractAddress,
+      WarningManager.abi,
+      signer
+    );
+    const secondReportTxDon = await contract.addCount(utils.formatBytes32String(receipentUser.email));
+    await secondReportTxDon.wait();
+  };
+
+  // useEffect(() => {
+  //   connectWallet();
+  // }, []);
 
   const sendNewMessage = async (image) => {
     try {
@@ -194,6 +279,7 @@ function ChatArea({ socket }) {
 
   const reportUser = async () => {
     try {
+      connectWallet();
     } catch (error) {
       toast.error(error.message);
     }
@@ -219,6 +305,13 @@ function ChatArea({ socket }) {
             </div>
           )}
           <h1 className="">{receipentUser.name}</h1>
+
+          {warnedUsers.includes(receipentUser.email) && (
+            <div>
+              <div className="bg-red-700 h-5 w-5 rounded-full h-5 w-5 flex items-center justify-center"></div>
+            </div>
+          )}
+
           <div className="flex md:flex md:flex-grow flex-row-reverse space-x-1 gap-3">
 
             <button

@@ -6,8 +6,54 @@ import { HideLoader, ShowLoader } from "../../../redux/loaderSlice";
 import { SetAllChats, SetSelectedChat } from "../../../redux/userSlice";
 import moment from "moment";
 import store from "../../../redux/store";
+import WarningManager from "../../../artifacts/contracts/WarningManager.sol/WarningManager.json";
+import { ethers } from "ethers";
 
 function UsersList({ searchKey, socket, onlineUsers }) {
+
+  const [warnedUsers, setWarnedUsers] = React.useState([]);
+
+  const connectWallet = async () => {
+    try {
+      const { ethereum } = window;
+      if (!ethereum) {
+        alert("Please install MetaMask!");
+        return;
+      }
+      const accounts = await ethereum.request({
+        method: "eth_requestAccounts",
+      });
+      console.log("Connected", accounts[0]);
+      fetchingList();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchingList = async () => {
+    let contractAddress = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0";
+    const { ethereum } = window;
+    if (!ethereum) {
+      alert("Please install MetaMask!");
+      return;
+    }
+    const provider = new ethers.providers.Web3Provider(ethereum);
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(
+      contractAddress,
+      WarningManager.abi,
+      signer
+    );
+    const warnList = await contract.getCautionedPersons();
+    console.log(warnList);
+    setWarnedUsers(warnList);
+  };
+
+  useEffect(() => {
+    connectWallet();
+  }, []);
+
+
   const { allUsers, allChats, user, selectedChat } = useSelector(
     (state) => state.userReducer
   );
@@ -190,9 +236,9 @@ function UsersList({ searchKey, socket, onlineUsers }) {
                 <div className="flex gap-1">
                   <div className="flex gap-1 items-center">
                     <h1>{userObj.name}</h1>
-                    { (
+                    {warnedUsers.includes(userObj.email) && (
                       <div>
-                        {/* <div className="bg-red-700 h-5 w-5 rounded-full h-5 w-5 flex items-center justify-center"></div> */}
+                        <div className="bg-red-700 h-5 w-5 rounded-full h-5 w-5 flex items-center justify-center"></div>
                       </div>
                     )}
                     {onlineUsers.includes(userObj._id) && (

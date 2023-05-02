@@ -4,6 +4,7 @@ import Login from "./pages/login";
 import Register from "./pages/register";
 import Profile from "./pages/profile";
 import { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { useSelector } from "react-redux";
 import Loader from "./components/Loader";
@@ -11,11 +12,7 @@ import React, { useEffect } from "react";
 import Greeter from "./artifacts/contracts/Greeter.sol/Greeter.json";
 import { ethers } from "ethers";
 
-let contttt1 = "loll";
-
 function App() {
-
-  let contttt = "loll";
   
   const connectWallet = async () => {
     try {
@@ -35,7 +32,7 @@ function App() {
   };
 
   const fetchGreetings = async () => {
-    let contractAddress = "YOUR_CONTRACT_ADDRESS";
+    let contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
     const { ethereum } = window;
     if (!ethereum) {
       alert("Please install MetaMask!");
@@ -50,6 +47,7 @@ function App() {
     );
     const greeting = await contract.greet();
     console.log(greeting);
+    toast.success("MetaMask Ready");
   };
 
   useEffect(() => {
