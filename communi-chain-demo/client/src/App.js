@@ -13,7 +13,7 @@ import Greeter from "./artifacts/contracts/Greeter.sol/Greeter.json";
 import { ethers } from "ethers";
 
 function App() {
-  
+
   const connectWallet = async () => {
     try {
       const { ethereum } = window;
@@ -55,7 +55,7 @@ function App() {
   }, []);
 
   const { loader } = useSelector(state => state.loaderReducer)
-  
+
   return (
     <div>
       <Toaster position="top-center" reverseOrder={false} />

@@ -59,7 +59,7 @@ function ProtectedRoute({ children }) {
           </h1>
         </div>
         <div className="flex gap-2 text-md items-center bg-white p-2 rounded">
-          {user?.profilePic && 
+          {user?.profilePic &&
             <img
               src={user?.profilePic}
               alt="profile"

@@ -1,5 +1,32 @@
 # Communi-Chain Final Year Project Demo
 
+## To run
+
+- Connected to non school internet, use phone hotspot would be best
+- Metamask unable to run with school internet
+- Have metamask installed and ready
+- Have hardhat network added to network settings and ready
+- Have hardhat private key accoount imported onto metamask and ready
+- Use chrome browser
+- Basic knowledge of npm and how things work might be needed
+- Basic knowledge of web3 and how things work might be needed
+
+1. Open new terminal at singpass-verify-demo
+2. If first time then {npm i}
+3. Thereafter {npm run start} this is singpass verification site
+4. Open new terminal at communi-chain-demo
+5. If first time then {npm i}
+6. Thereafter {npm run start} this is communi-chain server side
+7. Open new terminal at communi-chain-demo/client
+8. If first time then {npm i}
+9. Double check smart contracts {npx hardhat compile}
+10. Start local blockchain {npx hardhat node} this is the local hardhat node
+11. Open new terminal at communi-chain-demo/client
+12. Deploy smart contracts on local blockchain instance {npx hardhat run scripts/deploy.js --network localhost}
+13. Double check addresses in code
+14. Open new terminal at communi-chain-demo/client
+15. Thereafter {npm run start} this is communi-chain client side
+
 ## Project demo
 
 - Set up env before presentation
@@ -13,7 +40,7 @@
 - Donald donald.trumpet.demo@gmail.com
 - Eve eve.val.demo@gmail.com
 
-## Set up
+## Demo set up mock situtation
 
 - Alice, Bob, Donald and Eve already created
 - Alice, Bob, Eve has reported Donald so he has been marked as a cautioned user
@@ -26,88 +53,3 @@
 - So Eve report count is 2
 - Now Charlie can also report Eve
 - Now that there are 3 reports, Eve will be seen as a cautioned user as well
-
-# Hardhat + ReactJS Barebones Boilerplate
-
-## Sample Hardhat Project
-
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
-
-Try running some of the following tasks:
-
-```shell
-npx hardhat compile
-npx hardhat node
-npx hardhat run scripts/deploy.js --network localhost
-```
-
-## Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-### Available Scripts
-
-In the project directory, you can run:
-
-#### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-#### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-#### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-#### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-### Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-#### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-#### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-#### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-#### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-#### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-#### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

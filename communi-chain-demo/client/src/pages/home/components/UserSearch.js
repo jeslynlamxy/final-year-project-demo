@@ -1,7 +1,7 @@
 import React from "react";
 
-function UserSearch({searchKey , setSearchKey}) {
-  
+function UserSearch({ searchKey, setSearchKey }) {
+
   return (
     <div className="relative">
       <input

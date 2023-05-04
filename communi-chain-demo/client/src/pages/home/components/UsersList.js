@@ -256,10 +256,10 @@ function UsersList({ searchKey, socket, onlineUsers }) {
               {!allChats.find((chat) =>
                 chat.members.map((mem) => mem._id).includes(userObj._id)
               ) && (
-                <button className="border-primary border text-primary bg-white p-1 rounded">
-                  Create Chat
-                </button>
-              )}
+                  <button className="border-primary border text-primary bg-white p-1 rounded">
+                    Create Chat
+                  </button>
+                )}
             </div>
           </div>
         );

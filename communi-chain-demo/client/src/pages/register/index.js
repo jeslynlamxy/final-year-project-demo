@@ -17,7 +17,6 @@ function Register() {
     password: "",
   });
 
-
   const launchHigherResgister = async (email, password) => {
     try {
       const { ethereum } = window;

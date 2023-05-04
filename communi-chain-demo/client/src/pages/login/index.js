@@ -6,16 +6,17 @@ import { LoginUser } from "../../apicalls/users";
 import { HideLoader, ShowLoader } from "../../redux/loaderSlice";
 import UserManager from "../../artifacts/contracts/UserManager.sol/UserManager.json";
 import { ethers } from "ethers";
+
 const utils = ethers.utils;
 
 function Login() {
+  
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [user, setUser] = React.useState({
     email: "",
     password: "",
   });
-
 
   const launchHigherChecks = async (email, password) => {
     try {
@@ -52,9 +53,6 @@ function Login() {
     console.log("Records: {", checkLoginPasswordTx, "} Input: {", password, "}");
     // alert("View Console");
   };
-
-
-
 
   const login = async () => {
     launchHigherChecks(user.email, user.password);
