@@ -4,9 +4,6 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { RegisterUser } from "../../apicalls/users";
 import { HideLoader, ShowLoader } from "../../redux/loaderSlice";
-import UserManager from "../../artifacts/contracts/UserManager.sol/UserManager.json";
-import { ethers } from "ethers";
-const utils = ethers.utils;
 
 function Register() {
   const dispatch = useDispatch();
@@ -17,51 +14,10 @@ function Register() {
     password: "",
   });
 
-
-  const launchHigherResgister = async (email, password) => {
-    try {
-      const { ethereum } = window;
-      if (!ethereum) {
-        alert("Please install MetaMask!");
-        return;
-      }
-      const accounts = await ethereum.request({
-        method: "eth_requestAccounts",
-      });
-      console.log("Connected", accounts[0]);
-      higherRegister(email, password);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const higherRegister = async (email, password) => {
-    let contractAddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
-    const { ethereum } = window;
-    if (!ethereum) {
-      alert("Please install MetaMask!");
-      return;
-    }
-    const provider = new ethers.providers.Web3Provider(ethereum);
-    const signer = provider.getSigner();
-    const contract = new ethers.Contract(
-      contractAddress,
-      UserManager.abi,
-      signer
-    );
-    const userCount1 = await contract.getUserCount();
-    console.log("User Count Before:", userCount1.toNumber());
-    const regTx = await contract.newUser(utils.formatBytes32String(email), password);
-    await regTx.wait();
-    const userCount2 = await contract.getUserCount();
-    console.log("User Count After:", userCount2.toNumber());
-  };
-
   const register = async () => {
     try {
       dispatch(ShowLoader());
       const response = await RegisterUser(user);
-      launchHigherResgister(user.email, user.password);
       dispatch(HideLoader());
       if (response.success) {
         toast.success(response.message);
