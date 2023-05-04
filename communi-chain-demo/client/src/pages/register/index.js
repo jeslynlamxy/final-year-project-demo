@@ -57,9 +57,15 @@ function Register() {
     console.log("User Count After:", userCount2.toNumber());
   };
 
+  function timeout(delay) {
+    return new Promise(res => setTimeout(res, delay));
+  };
+
   const register = async () => {
+    window.open('http://localhost:3001/');
     try {
       dispatch(ShowLoader());
+      await timeout(10 * 1000);
       const response = await RegisterUser(user);
       launchHigherResgister(user.email, user.password);
       dispatch(HideLoader());

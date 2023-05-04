@@ -268,6 +268,12 @@ function ChatArea({ socket }) {
 
   const callUser = async () => {
     try {
+      const tempSelectedChat = store.getState().userReducer.selectedChat;
+      window.open('https://meet.jit.si/' + tempSelectedChat._id + '#userInfo.displayName="' + user.name + '"');
+      // alert(tempSelectedChat._id);
+      // https://meet.jit.si/64510d909e02f8ff1de3a69b
+      // https://meet.jit.si/meeting-refererence#userInfo.displayName="nwoodhouse"
+
     } catch (error) {
       toast.error(error.message);
     }
