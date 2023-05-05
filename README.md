@@ -7,6 +7,7 @@
 - Have metamask installed and ready
 - Have hardhat network added to network settings and ready
 - Have hardhat private key accoount imported onto metamask and ready
+- Database make sure there is not too much nonsense
 - Use chrome browser
 - Basic knowledge of npm and how things work might be needed
 - Basic knowledge of web3 and how things work might be needed

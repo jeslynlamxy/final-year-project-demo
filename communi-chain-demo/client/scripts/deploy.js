@@ -61,6 +61,9 @@ async function main() {
   // For testing
   console.log("*** REPORTING DEFAULTS FOR CAUTIONED USERS DONALD AND EVE ***");
   
+  const checkListPreTx = await warningmanager.getCautionedPersons();
+  console.log("Get Cautioned Persons:", checkListPreTx);
+
   const checkCountTxDon = await warningmanager.getCount(utils.formatBytes32String("donald.trumpet.demo@gmail.com"));
   console.log("Donald Report Count:", checkCountTxDon.toNumber());
 
