@@ -35,11 +35,11 @@
 
 ## Different accounts
 
-- Alice alice.wonderland.demo@gmail.com
-- Bob bob.builderr.demo@gmail.com
-- Charlie charlie.choco.demo@gmail.com
-- Donald donald.trumpet.demo@gmail.com
-- Eve eve.val.demo@gmail.com
+- Alice
+- Bob
+- Charlie
+- Donald
+- Eve
 
 ## Demo set up mock situtation
 
